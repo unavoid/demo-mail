@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.util.PropertyUtils;
 import org.springframework.web.bind.annotation.*;
 
 import com.demo.mail.coupon.entity.CouponEntity;
@@ -25,6 +27,10 @@ import com.demo.common.utils.R;
 public class CouponController {
     @Autowired
     private CouponService couponService;
+    @Value("${coupon.user.name}")
+    private String username;
+    @Value("${coupon.user.age}")
+    private String age;
 
     @GetMapping("/member/list")
     public R membercoupons(){
@@ -33,6 +39,10 @@ public class CouponController {
         return R.ok().put("coupons",Arrays.asList(couponEntity));
     }
 
+    @GetMapping("/test")
+    public R getInfo(){
+        return R.ok().put("username",username).put("age",age);
+    }
 
     /**
      * 列表
