@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.util.PropertyUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +25,7 @@ import com.demo.common.utils.R;
  */
 @RestController
 @RequestMapping("coupon/coupon")
+@RefreshScope
 public class CouponController {
     @Autowired
     private CouponService couponService;
